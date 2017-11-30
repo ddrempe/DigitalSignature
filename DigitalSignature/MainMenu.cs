@@ -87,12 +87,30 @@ namespace DigitalSignature
 
         private void btnAsymEncrypt_Click(object sender, EventArgs e)
         {
+            string inputFilePath = tbAsymEncryptInput.Text;
+            string outputFilePath = tbAsymEncryptOutput.Text;
+            string publicKeyPath = tbAsymEncryptKey.Text;
 
+            string inputFileContent = File.ReadAllText(inputFilePath);
+            string publicKeyContent = File.ReadAllText(publicKeyPath);
+            RSAParameters publicKey = AsymmetricEncryption.ConvertStringKeyToParameters(publicKeyContent);
+
+            string encryptedText = AsymmetricEncryption.EncryptText(inputFileContent, publicKey);
+            File.WriteAllText(outputFilePath, encryptedText);
         }
 
         private void btnAsymDecrypt_Click(object sender, EventArgs e)
         {
+            string inputFilePath = tbAsymDecryptInput.Text;
+            string outputFilePath = tbAsymDecryptOutput.Text;
+            string privateKeyPath = tbAsymDecryptKey.Text;
 
+            string inputFileContent = File.ReadAllText(inputFilePath);
+            string privateKeyContent = File.ReadAllText(privateKeyPath);
+            RSAParameters privateKey = AsymmetricEncryption.ConvertStringKeyToParameters(privateKeyContent);
+
+            string decryptedText = AsymmetricEncryption.DecryptText(inputFileContent, privateKey);
+            File.WriteAllText(outputFilePath, decryptedText);
         }
     }
 }
