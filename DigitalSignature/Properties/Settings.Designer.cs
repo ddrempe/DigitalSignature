@@ -35,9 +35,9 @@ namespace DigitalSignature.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("tajni_kljuc.txt")]
-        public string SymmetricKeyOutputFileName {
+        public string SymmetricCryptographySecretKeyFileName {
             get {
-                return ((string)(this["SymmetricKeyOutputFileName"]));
+                return ((string)(this["SymmetricCryptographySecretKeyFileName"]));
             }
         }
         
@@ -80,6 +80,54 @@ namespace DigitalSignature.Properties {
             }
             set {
                 this["SymmetricCryptographyDecryptedFileName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("asymmetric_encrypted.txt")]
+        public string AsymmetricCryptographyEncryptedFileName {
+            get {
+                return ((string)(this["AsymmetricCryptographyEncryptedFileName"]));
+            }
+            set {
+                this["AsymmetricCryptographyEncryptedFileName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("asymmetric_decrypted.txt")]
+        public string AsymmetricCryptographyDecryptedFileName {
+            get {
+                return ((string)(this["AsymmetricCryptographyDecryptedFileName"]));
+            }
+            set {
+                this["AsymmetricCryptographyDecryptedFileName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("javni_kljuc.txt")]
+        public string AsymmetricCryptographyPublicKeyFileName {
+            get {
+                return ((string)(this["AsymmetricCryptographyPublicKeyFileName"]));
+            }
+            set {
+                this["AsymmetricCryptographyPublicKeyFileName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("privatni_kljuc.txt")]
+        public string AsymmetricCryptographyPrivateKeyFileName {
+            get {
+                return ((string)(this["AsymmetricCryptographyPrivateKeyFileName"]));
+            }
+            set {
+                this["AsymmetricCryptographyPrivateKeyFileName"] = value;
             }
         }
     }

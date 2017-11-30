@@ -5,7 +5,7 @@
     <Setting Name="FolderPath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\ddrempeCryptography</Value>
     </Setting>
-    <Setting Name="SymmetricKeyOutputFileName" Type="System.String" Scope="Application">
+    <Setting Name="SymmetricCryptographySecretKeyFileName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">tajni_kljuc.txt</Value>
     </Setting>
     <Setting Name="SymmetricCryptographyPassphrase" Type="System.String" Scope="Application">
@@ -19,6 +19,18 @@
     </Setting>
     <Setting Name="SymmetricCryptographyDecryptedFileName" Type="System.String" Scope="User">
       <Value Profile="(Default)">symmetric_decrypted.txt</Value>
+    </Setting>
+    <Setting Name="AsymmetricCryptographyEncryptedFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">asymmetric_encrypted.txt</Value>
+    </Setting>
+    <Setting Name="AsymmetricCryptographyDecryptedFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">asymmetric_decrypted.txt</Value>
+    </Setting>
+    <Setting Name="AsymmetricCryptographyPublicKeyFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">javni_kljuc.txt</Value>
+    </Setting>
+    <Setting Name="AsymmetricCryptographyPrivateKeyFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">privatni_kljuc.txt</Value>
     </Setting>
   </Settings>
 </SettingsFile>

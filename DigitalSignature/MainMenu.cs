@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,7 +20,7 @@ namespace DigitalSignature
             InitializeComponent();
 
             //setting default path for file created for symmetric key
-            tbGenerateSymKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricKeyOutputFileName);
+            tbGenerateSymKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographySecretKeyFileName);
 
             //setting default input and output paths for symmetric encryption
             tbSymEncryptInput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.PlainTextFileName);
@@ -28,6 +29,20 @@ namespace DigitalSignature
             //setting default input and output paths for symmetric decryption
             tbSymDecryptInput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographyEncryptedFileName);
             tbSymDecryptOutput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographyDecryptedFileName);
+
+            //setting default path for files created for public and private key pair
+            tbGenerateAsymPublicKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyPublicKeyFileName);
+            tbGenerateAsymPrivateKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyPrivateKeyFileName);
+
+            //setting default input and output paths for asymmetric encryption
+            tbAsymEncryptInput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.PlainTextFileName);
+            tbAsymEncryptOutput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyEncryptedFileName);
+            tbAsymEncryptKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyPublicKeyFileName);
+
+            //setting default input and output paths for asymmetric decryption
+            tbAsymDecryptInput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyEncryptedFileName);
+            tbAsymDecryptOutput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyDecryptedFileName);
+            tbAsymDecryptKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyPrivateKeyFileName);
         }
 
         private void btnGenerateSymKey_Click(object sender, EventArgs e)
@@ -53,6 +68,31 @@ namespace DigitalSignature
             string inputFileContent = File.ReadAllText(inputFilePath);
             string decryptedText = SymmetricEncryption.DecryptText(inputFileContent, Properties.Settings.Default.SymmetricCryptographyPassphrase);
             File.WriteAllText(outputFilePath, decryptedText);
+        }
+
+        private void btnGenerateAsymKey_Click(object sender, EventArgs e)
+        {
+            string outputPublicKeyFilePath = tbGenerateAsymPublicKey.Text;
+            string outputPrivateKeyFilePath = tbGenerateAsymPrivateKey.Text;
+
+            RSACryptoServiceProvider csp = AsymmetricEncryption.GenerateCSP();
+            RSAParameters publicKey = csp.ExportParameters(false);
+            string publicKeyString = AsymmetricEncryption.ConvertParametersToStringKey(publicKey);
+            RSAParameters privateKey = csp.ExportParameters(true);
+            string privateKeyString = AsymmetricEncryption.ConvertParametersToStringKey(privateKey);
+
+            File.WriteAllText(outputPublicKeyFilePath, publicKeyString);
+            File.WriteAllText(outputPrivateKeyFilePath, privateKeyString);
+        }
+
+        private void btnAsymEncrypt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAsymDecrypt_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
