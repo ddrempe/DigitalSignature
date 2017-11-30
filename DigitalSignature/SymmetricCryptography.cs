@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DigitalSignature
 {
-    public partial class Form1 : Form
+    public partial class SymmetricCryptography : Form
     {
-        public Form1()
+        public SymmetricCryptography()
         {
             InitializeComponent();
         }

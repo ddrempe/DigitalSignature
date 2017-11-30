@@ -1,7 +1,15 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DigitalSignature.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FolderPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\ddrempeCryptography</Value>
+    </Setting>
+    <Setting Name="SymmetricKeyOutputFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">tajni_kljuc.txt</Value>
+    </Setting>
+    <Setting Name="SymmetricCryptographyPassphrase" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">VerySecret</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
