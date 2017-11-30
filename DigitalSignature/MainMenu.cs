@@ -43,6 +43,10 @@ namespace DigitalSignature
             tbAsymDecryptInput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyEncryptedFileName);
             tbAsymDecryptOutput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyDecryptedFileName);
             tbAsymDecryptKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyPrivateKeyFileName);
+
+            //setting default input and output paths for text hashing
+            tbHashTextInput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.PlainTextFileName);
+            tbHashTextOutput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.HashedTextFileName);
         }
 
         private void btnGenerateSymKey_Click(object sender, EventArgs e)
@@ -111,6 +115,17 @@ namespace DigitalSignature
 
             string decryptedText = AsymmetricEncryption.DecryptText(inputFileContent, privateKey);
             File.WriteAllText(outputFilePath, decryptedText);
+        }
+
+        private void btnHashText_Click(object sender, EventArgs e)
+        {
+            string inputFilePath = tbHashTextInput.Text;
+            string outputFilePath = tbHashTextOutput.Text;
+
+            string inputFileContent = File.ReadAllText(inputFilePath);
+            string hashedText = Hashing.GetHashedText(inputFileContent);
+
+            File.WriteAllText(outputFilePath, hashedText);
         }
     }
 }

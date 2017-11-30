@@ -70,6 +70,13 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.tbGenerateAsymPrivateKey = new System.Windows.Forms.TextBox();
+            this.tpHash = new System.Windows.Forms.TabPage();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tbHashTextOutput = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tbHashTextInput = new System.Windows.Forms.TextBox();
+            this.btnHashText = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tpSymmetric.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -79,12 +86,15 @@
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.tpHash.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.tpSymmetric);
             this.tabControl.Controls.Add(this.tpAsymmetric);
+            this.tabControl.Controls.Add(this.tpHash);
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
@@ -481,6 +491,73 @@
             this.tbGenerateAsymPrivateKey.Size = new System.Drawing.Size(720, 27);
             this.tbGenerateAsymPrivateKey.TabIndex = 3;
             // 
+            // tpHash
+            // 
+            this.tpHash.Controls.Add(this.groupBox7);
+            this.tpHash.Location = new System.Drawing.Point(4, 29);
+            this.tpHash.Name = "tpHash";
+            this.tpHash.Padding = new System.Windows.Forms.Padding(3);
+            this.tpHash.Size = new System.Drawing.Size(950, 579);
+            this.tpHash.TabIndex = 2;
+            this.tpHash.Text = "Hashing";
+            this.tpHash.UseVisualStyleBackColor = true;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label15);
+            this.groupBox7.Controls.Add(this.tbHashTextOutput);
+            this.groupBox7.Controls.Add(this.label16);
+            this.groupBox7.Controls.Add(this.tbHashTextInput);
+            this.groupBox7.Controls.Add(this.btnHashText);
+            this.groupBox7.Location = new System.Drawing.Point(6, 16);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(938, 151);
+            this.groupBox7.TabIndex = 4;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Text hashing";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 83);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(177, 20);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "Hashed text output file";
+            // 
+            // tbHashTextOutput
+            // 
+            this.tbHashTextOutput.Location = new System.Drawing.Point(6, 106);
+            this.tbHashTextOutput.Name = "tbHashTextOutput";
+            this.tbHashTextOutput.Size = new System.Drawing.Size(720, 27);
+            this.tbHashTextOutput.TabIndex = 3;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 26);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(146, 20);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "Plain text input file";
+            // 
+            // tbHashTextInput
+            // 
+            this.tbHashTextInput.Location = new System.Drawing.Point(6, 49);
+            this.tbHashTextInput.Name = "tbHashTextInput";
+            this.tbHashTextInput.Size = new System.Drawing.Size(720, 27);
+            this.tbHashTextInput.TabIndex = 1;
+            // 
+            // btnHashText
+            // 
+            this.btnHashText.Location = new System.Drawing.Point(732, 49);
+            this.btnHashText.Name = "btnHashText";
+            this.btnHashText.Size = new System.Drawing.Size(200, 84);
+            this.btnHashText.TabIndex = 0;
+            this.btnHashText.Text = "Hash";
+            this.btnHashText.UseVisualStyleBackColor = true;
+            this.btnHashText.Click += new System.EventHandler(this.btnHashText_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -505,6 +582,9 @@
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.tpHash.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -553,6 +633,13 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox tbGenerateAsymPrivateKey;
+        private System.Windows.Forms.TabPage tpHash;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox tbHashTextOutput;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox tbHashTextInput;
+        private System.Windows.Forms.Button btnHashText;
     }
 }
 

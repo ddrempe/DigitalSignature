@@ -59,75 +59,66 @@ namespace DigitalSignature.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("symmetric_encrypted.txt")]
         public string SymmetricCryptographyEncryptedFileName {
             get {
                 return ((string)(this["SymmetricCryptographyEncryptedFileName"]));
             }
-            set {
-                this["SymmetricCryptographyEncryptedFileName"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("symmetric_decrypted.txt")]
         public string SymmetricCryptographyDecryptedFileName {
             get {
                 return ((string)(this["SymmetricCryptographyDecryptedFileName"]));
             }
-            set {
-                this["SymmetricCryptographyDecryptedFileName"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("asymmetric_encrypted.txt")]
         public string AsymmetricCryptographyEncryptedFileName {
             get {
                 return ((string)(this["AsymmetricCryptographyEncryptedFileName"]));
             }
-            set {
-                this["AsymmetricCryptographyEncryptedFileName"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("asymmetric_decrypted.txt")]
         public string AsymmetricCryptographyDecryptedFileName {
             get {
                 return ((string)(this["AsymmetricCryptographyDecryptedFileName"]));
             }
-            set {
-                this["AsymmetricCryptographyDecryptedFileName"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("javni_kljuc.txt")]
         public string AsymmetricCryptographyPublicKeyFileName {
             get {
                 return ((string)(this["AsymmetricCryptographyPublicKeyFileName"]));
             }
-            set {
-                this["AsymmetricCryptographyPublicKeyFileName"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("privatni_kljuc.txt")]
         public string AsymmetricCryptographyPrivateKeyFileName {
             get {
                 return ((string)(this["AsymmetricCryptographyPrivateKeyFileName"]));
             }
-            set {
-                this["AsymmetricCryptographyPrivateKeyFileName"] = value;
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("hashed_text.txt")]
+        public string HashedTextFileName {
+            get {
+                return ((string)(this["HashedTextFileName"]));
             }
         }
     }
