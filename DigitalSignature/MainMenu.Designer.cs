@@ -41,10 +41,17 @@
             this.btnSymEncrypt = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.tbSymEncryptOutput = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tbSymDecryptOutput = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbSymDecryptInput = new System.Windows.Forms.TextBox();
+            this.btnSymDecrypt = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tpSymmetric.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -61,6 +68,7 @@
             // tpSymmetric
             // 
             this.tpSymmetric.BackColor = System.Drawing.Color.White;
+            this.tpSymmetric.Controls.Add(this.groupBox3);
             this.tpSymmetric.Controls.Add(this.groupBox2);
             this.tpSymmetric.Controls.Add(this.groupBox1);
             this.tpSymmetric.Location = new System.Drawing.Point(4, 29);
@@ -125,7 +133,7 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.tbSymEncryptInput);
             this.groupBox2.Controls.Add(this.btnSymEncrypt);
-            this.groupBox2.Location = new System.Drawing.Point(6, 103);
+            this.groupBox2.Location = new System.Drawing.Point(6, 147);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(938, 151);
             this.groupBox2.TabIndex = 3;
@@ -174,6 +182,62 @@
             this.tbSymEncryptOutput.Size = new System.Drawing.Size(720, 27);
             this.tbSymEncryptOutput.TabIndex = 3;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.tbSymDecryptOutput);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.tbSymDecryptInput);
+            this.groupBox3.Controls.Add(this.btnSymDecrypt);
+            this.groupBox3.Location = new System.Drawing.Point(6, 339);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(938, 151);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Symmetric decryption";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 83);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(123, 20);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Output file path";
+            // 
+            // tbSymDecryptOutput
+            // 
+            this.tbSymDecryptOutput.Location = new System.Drawing.Point(6, 106);
+            this.tbSymDecryptOutput.Name = "tbSymDecryptOutput";
+            this.tbSymDecryptOutput.Size = new System.Drawing.Size(720, 27);
+            this.tbSymDecryptOutput.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 20);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Input file path";
+            // 
+            // tbSymDecryptInput
+            // 
+            this.tbSymDecryptInput.Location = new System.Drawing.Point(6, 49);
+            this.tbSymDecryptInput.Name = "tbSymDecryptInput";
+            this.tbSymDecryptInput.Size = new System.Drawing.Size(720, 27);
+            this.tbSymDecryptInput.TabIndex = 1;
+            // 
+            // btnSymDecrypt
+            // 
+            this.btnSymDecrypt.Location = new System.Drawing.Point(732, 49);
+            this.btnSymDecrypt.Name = "btnSymDecrypt";
+            this.btnSymDecrypt.Size = new System.Drawing.Size(200, 84);
+            this.btnSymDecrypt.TabIndex = 0;
+            this.btnSymDecrypt.Text = "Decrypt";
+            this.btnSymDecrypt.UseVisualStyleBackColor = true;
+            this.btnSymDecrypt.Click += new System.EventHandler(this.btnSymDecrypt_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -188,6 +252,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -206,6 +272,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbSymEncryptInput;
         private System.Windows.Forms.Button btnSymEncrypt;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox tbSymDecryptOutput;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbSymDecryptInput;
+        private System.Windows.Forms.Button btnSymDecrypt;
     }
 }
 

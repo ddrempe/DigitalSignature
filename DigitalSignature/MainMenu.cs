@@ -18,9 +18,16 @@ namespace DigitalSignature
         {
             InitializeComponent();
 
+            //setting default path for file created for symmetric key
             tbGenerateSymKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricKeyOutputFileName);
+
+            //setting default input and output paths for symmetric encryption
             tbSymEncryptInput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.PlainTextFileName);
             tbSymEncryptOutput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographyEncryptedFileName);
+
+            //setting default input and output paths for symmetric decryption
+            tbSymDecryptInput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographyEncryptedFileName);
+            tbSymDecryptOutput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographyDecryptedFileName);
         }
 
         private void btnGenerateSymKey_Click(object sender, EventArgs e)
@@ -37,6 +44,15 @@ namespace DigitalSignature
             string inputFileContent = File.ReadAllText(inputFilePath);
             string encryptedText = SymmetricEncryption.EncryptText(inputFileContent, Properties.Settings.Default.SymmetricCryptographyPassphrase);
             File.WriteAllText(outputFilePath, encryptedText);
+        }
+
+        private void btnSymDecrypt_Click(object sender, EventArgs e)
+        {
+            string inputFilePath = tbSymDecryptInput.Text;
+            string outputFilePath = tbSymDecryptOutput.Text;
+            string inputFileContent = File.ReadAllText(inputFilePath);
+            string decryptedText = SymmetricEncryption.DecryptText(inputFileContent, Properties.Settings.Default.SymmetricCryptographyPassphrase);
+            File.WriteAllText(outputFilePath, decryptedText);
         }
     }
 }
