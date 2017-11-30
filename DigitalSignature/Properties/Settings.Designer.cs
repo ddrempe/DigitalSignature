@@ -49,5 +49,38 @@ namespace DigitalSignature.Properties {
                 return ((string)(this["SymmetricCryptographyPassphrase"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("text_for_encryption.txt")]
+        public string PlainTextFileName {
+            get {
+                return ((string)(this["PlainTextFileName"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("symmetric_encrypted.txt")]
+        public string SymmetricCryptographyEncryptedFileName {
+            get {
+                return ((string)(this["SymmetricCryptographyEncryptedFileName"]));
+            }
+            set {
+                this["SymmetricCryptographyEncryptedFileName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("symmetric_decrypted.txt")]
+        public string SymmetricCryptographyDecryptedFileName {
+            get {
+                return ((string)(this["SymmetricCryptographyDecryptedFileName"]));
+            }
+            set {
+                this["SymmetricCryptographyDecryptedFileName"] = value;
+            }
+        }
     }
 }

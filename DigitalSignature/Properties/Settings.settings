@@ -11,5 +11,14 @@
     <Setting Name="SymmetricCryptographyPassphrase" Type="System.String" Scope="Application">
       <Value Profile="(Default)">VerySecret</Value>
     </Setting>
+    <Setting Name="PlainTextFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">text_for_encryption.txt</Value>
+    </Setting>
+    <Setting Name="SymmetricCryptographyEncryptedFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">symmetric_encrypted.txt</Value>
+    </Setting>
+    <Setting Name="SymmetricCryptographyDecryptedFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">symmetric_decrypted.txt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
