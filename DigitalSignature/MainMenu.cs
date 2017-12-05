@@ -25,10 +25,12 @@ namespace DigitalSignature
             //setting default input and output paths for symmetric encryption
             tbSymEncryptInput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.PlainTextFileName);
             tbSymEncryptOutput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographyEncryptedFileName);
+            tbSymEncryptKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographySecretKeyFileName);
 
             //setting default input and output paths for symmetric decryption
             tbSymDecryptInput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographyEncryptedFileName);
             tbSymDecryptOutput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographyDecryptedFileName);
+            tbSymDecryptKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographySecretKeyFileName);
 
             //setting default path for files created for public and private key pair
             tbGenerateAsymPublicKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyPublicKeyFileName);
@@ -52,25 +54,31 @@ namespace DigitalSignature
         private void btnGenerateSymKey_Click(object sender, EventArgs e)
         {
             string outputFilePath = tbGenerateSymKey.Text;
-            string symmetricKey = SymmetricEncryption.GenerateKey(Properties.Settings.Default.SymmetricCryptographyPassphrase);
+            string symmetricKey = SymmetricEncryption.GenerateKey_Aes();
             File.WriteAllText(outputFilePath, symmetricKey);
         }
 
         private void btnSymEncrypt_Click(object sender, EventArgs e)
         {
-            string inputFilePath = tbSymEncryptInput.Text;
             string outputFilePath = tbSymEncryptOutput.Text;
+            string inputFilePath = tbSymEncryptInput.Text;
             string inputFileContent = File.ReadAllText(inputFilePath);
-            string encryptedText = SymmetricEncryption.EncryptText(inputFileContent, Properties.Settings.Default.SymmetricCryptographyPassphrase);
+            string secretKeyPath = tbSymEncryptKey.Text;
+            string secretKeyContent = File.ReadAllText(secretKeyPath);
+
+            string encryptedText = SymmetricEncryption.EncryptString_Aes(inputFileContent, secretKeyContent);
             File.WriteAllText(outputFilePath, encryptedText);
         }
 
         private void btnSymDecrypt_Click(object sender, EventArgs e)
         {
-            string inputFilePath = tbSymDecryptInput.Text;
             string outputFilePath = tbSymDecryptOutput.Text;
+            string inputFilePath = tbSymDecryptInput.Text;            
             string inputFileContent = File.ReadAllText(inputFilePath);
-            string decryptedText = SymmetricEncryption.DecryptText(inputFileContent, Properties.Settings.Default.SymmetricCryptographyPassphrase);
+            string secretKeyPath = tbSymDecryptKey.Text;
+            string secretKeyContent = File.ReadAllText(secretKeyPath);
+
+            string decryptedText = SymmetricEncryption.DecryptString_Aes(inputFileContent, secretKeyContent);
             File.WriteAllText(outputFilePath, decryptedText);
         }
 
