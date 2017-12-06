@@ -80,7 +80,22 @@
             this.label16 = new System.Windows.Forms.Label();
             this.tbHashTextInput = new System.Windows.Forms.TextBox();
             this.btnHashText = new System.Windows.Forms.Button();
+            this.tpDigitalSignature = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.tbCreateDSInputKey = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.tbCreateDSInputText = new System.Windows.Forms.TextBox();
+            this.btnCreateDigitalSignature = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tbCheckDSInputKey = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tbCheckDSInputSignature = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.tbCheckDSInputText = new System.Windows.Forms.TextBox();
+            this.btnCheckDigitalSignature = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tpSymmetric.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -92,6 +107,9 @@
             this.groupBox6.SuspendLayout();
             this.tpHash.SuspendLayout();
             this.groupBox7.SuspendLayout();
+            this.tpDigitalSignature.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
@@ -99,6 +117,7 @@
             this.tabControl.Controls.Add(this.tpSymmetric);
             this.tabControl.Controls.Add(this.tpAsymmetric);
             this.tabControl.Controls.Add(this.tpHash);
+            this.tabControl.Controls.Add(this.tpDigitalSignature);
             this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.tabControl.Location = new System.Drawing.Point(12, 12);
             this.tabControl.Name = "tabControl";
@@ -485,9 +504,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(6, 79);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(163, 20);
+            this.label14.Size = new System.Drawing.Size(198, 20);
             this.label14.TabIndex = 4;
-            this.label14.Text = "Public key output file";
+            this.label14.Text = "Decryption key output file";
             // 
             // tbGenerateAsymPrivateKey
             // 
@@ -501,9 +520,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(6, 26);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(163, 20);
+            this.label10.Size = new System.Drawing.Size(196, 20);
             this.label10.TabIndex = 2;
-            this.label10.Text = "Public key output file";
+            this.label10.Text = "Encryption key output file";
             // 
             // tbGenerateAsymPublicKey
             // 
@@ -589,6 +608,74 @@
             this.btnHashText.UseVisualStyleBackColor = true;
             this.btnHashText.Click += new System.EventHandler(this.btnHashText_Click);
             // 
+            // tpDigitalSignature
+            // 
+            this.tpDigitalSignature.Controls.Add(this.groupBox8);
+            this.tpDigitalSignature.Controls.Add(this.groupBox9);
+            this.tpDigitalSignature.Location = new System.Drawing.Point(4, 29);
+            this.tpDigitalSignature.Name = "tpDigitalSignature";
+            this.tpDigitalSignature.Padding = new System.Windows.Forms.Padding(3);
+            this.tpDigitalSignature.Size = new System.Drawing.Size(950, 579);
+            this.tpDigitalSignature.TabIndex = 3;
+            this.tpDigitalSignature.Text = "Digital signature";
+            this.tpDigitalSignature.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.label22);
+            this.groupBox9.Controls.Add(this.tbCreateDSInputKey);
+            this.groupBox9.Controls.Add(this.label24);
+            this.groupBox9.Controls.Add(this.tbCreateDSInputText);
+            this.groupBox9.Controls.Add(this.btnCreateDigitalSignature);
+            this.groupBox9.Location = new System.Drawing.Point(6, 47);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(938, 142);
+            this.groupBox9.TabIndex = 10;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Creating digital signature";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 81);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(159, 20);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "Private key input file";
+            // 
+            // tbCreateDSInputKey
+            // 
+            this.tbCreateDSInputKey.Location = new System.Drawing.Point(6, 104);
+            this.tbCreateDSInputKey.Name = "tbCreateDSInputKey";
+            this.tbCreateDSInputKey.Size = new System.Drawing.Size(720, 27);
+            this.tbCreateDSInputKey.TabIndex = 5;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 26);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(146, 20);
+            this.label24.TabIndex = 2;
+            this.label24.Text = "Plain text input file";
+            // 
+            // tbCreateDSInputText
+            // 
+            this.tbCreateDSInputText.Location = new System.Drawing.Point(6, 49);
+            this.tbCreateDSInputText.Name = "tbCreateDSInputText";
+            this.tbCreateDSInputText.Size = new System.Drawing.Size(720, 27);
+            this.tbCreateDSInputText.TabIndex = 1;
+            // 
+            // btnCreateDigitalSignature
+            // 
+            this.btnCreateDigitalSignature.Location = new System.Drawing.Point(732, 49);
+            this.btnCreateDigitalSignature.Name = "btnCreateDigitalSignature";
+            this.btnCreateDigitalSignature.Size = new System.Drawing.Size(200, 82);
+            this.btnCreateDigitalSignature.TabIndex = 0;
+            this.btnCreateDigitalSignature.Text = "Create digital signature";
+            this.btnCreateDigitalSignature.UseVisualStyleBackColor = true;
+            this.btnCreateDigitalSignature.Click += new System.EventHandler(this.btnCreateDigitalSignature_Click);
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -597,6 +684,80 @@
             this.label13.Size = new System.Drawing.Size(159, 17);
             this.label13.TabIndex = 2;
             this.label13.Text = "Damir Drempetić (2017)";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label19);
+            this.groupBox8.Controls.Add(this.tbCheckDSInputKey);
+            this.groupBox8.Controls.Add(this.label20);
+            this.groupBox8.Controls.Add(this.tbCheckDSInputSignature);
+            this.groupBox8.Controls.Add(this.label21);
+            this.groupBox8.Controls.Add(this.tbCheckDSInputText);
+            this.groupBox8.Controls.Add(this.btnCheckDigitalSignature);
+            this.groupBox8.Location = new System.Drawing.Point(6, 215);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(938, 195);
+            this.groupBox8.TabIndex = 11;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Checking digital signature";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 81);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(153, 20);
+            this.label19.TabIndex = 6;
+            this.label19.Text = "Public key input file";
+            // 
+            // tbCheckDSInputKey
+            // 
+            this.tbCheckDSInputKey.Location = new System.Drawing.Point(6, 104);
+            this.tbCheckDSInputKey.Name = "tbCheckDSInputKey";
+            this.tbCheckDSInputKey.Size = new System.Drawing.Size(720, 27);
+            this.tbCheckDSInputKey.TabIndex = 5;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 136);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(199, 20);
+            this.label20.TabIndex = 4;
+            this.label20.Text = "Digital signature input file";
+            // 
+            // tbCheckDSInputSignature
+            // 
+            this.tbCheckDSInputSignature.Location = new System.Drawing.Point(6, 159);
+            this.tbCheckDSInputSignature.Name = "tbCheckDSInputSignature";
+            this.tbCheckDSInputSignature.Size = new System.Drawing.Size(720, 27);
+            this.tbCheckDSInputSignature.TabIndex = 3;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 26);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(146, 20);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Plain text input file";
+            // 
+            // tbCheckDSInputText
+            // 
+            this.tbCheckDSInputText.Location = new System.Drawing.Point(6, 49);
+            this.tbCheckDSInputText.Name = "tbCheckDSInputText";
+            this.tbCheckDSInputText.Size = new System.Drawing.Size(720, 27);
+            this.tbCheckDSInputText.TabIndex = 1;
+            // 
+            // btnCheckDigitalSignature
+            // 
+            this.btnCheckDigitalSignature.Location = new System.Drawing.Point(732, 49);
+            this.btnCheckDigitalSignature.Name = "btnCheckDigitalSignature";
+            this.btnCheckDigitalSignature.Size = new System.Drawing.Size(200, 137);
+            this.btnCheckDigitalSignature.TabIndex = 0;
+            this.btnCheckDigitalSignature.Text = "Check digital signature";
+            this.btnCheckDigitalSignature.UseVisualStyleBackColor = true;
+            this.btnCheckDigitalSignature.Click += new System.EventHandler(this.btnCheckDigitalSignature_Click);
             // 
             // MainMenu
             // 
@@ -625,6 +786,11 @@
             this.tpHash.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
+            this.tpDigitalSignature.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -684,6 +850,21 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox tbSymEncryptInput;
         private System.Windows.Forms.Button btnSymEncrypt;
+        private System.Windows.Forms.TabPage tpDigitalSignature;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox tbCreateDSInputKey;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox tbCreateDSInputText;
+        private System.Windows.Forms.Button btnCreateDigitalSignature;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox tbCheckDSInputKey;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox tbCheckDSInputSignature;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox tbCheckDSInputText;
+        private System.Windows.Forms.Button btnCheckDigitalSignature;
     }
 }
 

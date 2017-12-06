@@ -49,6 +49,15 @@ namespace DigitalSignature
             //setting default input and output paths for text hashing
             tbHashTextInput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.PlainTextFileName);
             tbHashTextOutput.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.HashedTextFileName);
+
+            //setting default input paths for creating digital signature
+            tbCreateDSInputText.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.PlainTextFileName);
+            tbCreateDSInputKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyPrivateKeyFileName);
+
+            //setting default input paths for checking digital signature
+            tbCheckDSInputText.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.PlainTextFileName);
+            tbCheckDSInputKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.AsymmetricCryptographyPublicKeyFileName);
+            tbCheckDSInputSignature.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.DigitalSignatureEncryptedFileName);
         }
 
         private void btnGenerateSymKey_Click(object sender, EventArgs e)
@@ -134,6 +143,49 @@ namespace DigitalSignature
             string hashedText = Hashing.GetHashedText(inputFileContent);
 
             File.WriteAllText(outputFilePath, hashedText);
+        }
+
+        private void btnCreateDigitalSignature_Click(object sender, EventArgs e)
+        {
+            string inputFilePath = tbCreateDSInputText.Text;
+            string inputFileContent = File.ReadAllText(inputFilePath);
+
+            string inputKeyPath = tbCreateDSInputKey.Text;
+            string inputKeyContent = File.ReadAllText(inputKeyPath);
+            RSAParameters inputKey = AsymmetricEncryption.ConvertStringKeyToParameters(inputKeyContent);
+
+            string outputHashFilePath = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.DigitalSignatureHashedFileName);
+            string hashedText = Hashing.GetHashedText(inputFileContent);
+            File.WriteAllText(outputHashFilePath, hashedText);
+
+            string outputEncryptedFilePath = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.DigitalSignatureEncryptedFileName);
+            string encryptedHash = AsymmetricEncryption.EncryptText(hashedText, inputKey);
+            File.WriteAllText(outputEncryptedFilePath, encryptedHash);
+        }
+
+        private void btnCheckDigitalSignature_Click(object sender, EventArgs e)
+        {
+            string inputFilePath = tbCheckDSInputText.Text;
+            string inputFileContent = File.ReadAllText(inputFilePath);
+
+            string inputKeyPath = tbCheckDSInputKey.Text;
+            string inputKeyContent = File.ReadAllText(inputKeyPath);
+            RSAParameters inputKey = AsymmetricEncryption.ConvertStringKeyToParameters(inputKeyContent);
+
+            string inputSignaturePath = tbCheckDSInputSignature.Text;
+            string inputSignatureContent = File.ReadAllText(inputSignaturePath);
+
+            string hashedText = Hashing.GetHashedText(inputFileContent);
+            string decryptedHash = AsymmetricEncryption.DecryptText(inputSignatureContent, inputKey);
+
+            if (decryptedHash == hashedText)
+            {
+                MessageBox.Show("OK!");
+            }
+            else
+            {
+                MessageBox.Show("Digital signature is not valid!");
+            }
         }
     }
 }

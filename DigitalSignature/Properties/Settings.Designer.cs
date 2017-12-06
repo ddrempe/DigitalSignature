@@ -121,5 +121,23 @@ namespace DigitalSignature.Properties {
                 return ((string)(this["HashedTextFileName"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("digital-signature_hashed.txt")]
+        public string DigitalSignatureHashedFileName {
+            get {
+                return ((string)(this["DigitalSignatureHashedFileName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("digital-signature_encrypted.txt")]
+        public string DigitalSignatureEncryptedFileName {
+            get {
+                return ((string)(this["DigitalSignatureEncryptedFileName"]));
+            }
+        }
     }
 }

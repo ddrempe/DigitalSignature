@@ -35,5 +35,11 @@
     <Setting Name="HashedTextFileName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">hashed_text.txt</Value>
     </Setting>
+    <Setting Name="DigitalSignatureHashedFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">digital-signature_hashed.txt</Value>
+    </Setting>
+    <Setting Name="DigitalSignatureEncryptedFileName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">digital-signature_encrypted.txt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
