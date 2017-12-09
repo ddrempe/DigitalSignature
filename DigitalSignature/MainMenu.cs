@@ -19,6 +19,8 @@ namespace DigitalSignature
         {
             InitializeComponent();
 
+            Directory.CreateDirectory(Properties.Settings.Default.FolderPath);
+
             //setting default path for file created for symmetric key
             tbGenerateSymKey.Text = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.SymmetricCryptographySecretKeyFileName);
 
@@ -69,26 +71,45 @@ namespace DigitalSignature
 
         private void btnSymEncrypt_Click(object sender, EventArgs e)
         {
-            string outputFilePath = tbSymEncryptOutput.Text;
-            string inputFilePath = tbSymEncryptInput.Text;
-            string inputFileContent = File.ReadAllText(inputFilePath);
-            string secretKeyPath = tbSymEncryptKey.Text;
-            string secretKeyContent = File.ReadAllText(secretKeyPath);
+            try
+            {
+                string outputFilePath = tbSymEncryptOutput.Text;
+                string inputFilePath = tbSymEncryptInput.Text;
+                string inputFileContent = File.ReadAllText(inputFilePath);
 
-            string encryptedText = SymmetricEncryption.EncryptString_Aes(inputFileContent, secretKeyContent);
-            File.WriteAllText(outputFilePath, encryptedText);
+                string secretKeyPath = tbSymEncryptKey.Text;
+                string secretKeyContent = File.ReadAllText(secretKeyPath);
+
+                string encryptedText = SymmetricEncryption.EncryptString_Aes(inputFileContent, secretKeyContent);
+                File.WriteAllText(outputFilePath, encryptedText);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("The file is not found in the specified location");
+            }
         }
 
         private void btnSymDecrypt_Click(object sender, EventArgs e)
         {
-            string outputFilePath = tbSymDecryptOutput.Text;
-            string inputFilePath = tbSymDecryptInput.Text;            
-            string inputFileContent = File.ReadAllText(inputFilePath);
-            string secretKeyPath = tbSymDecryptKey.Text;
-            string secretKeyContent = File.ReadAllText(secretKeyPath);
+            try
+            {
+                string outputFilePath = tbSymDecryptOutput.Text;
+                string inputFilePath = tbSymDecryptInput.Text;
+                string inputFileContent = File.ReadAllText(inputFilePath);
+                string secretKeyPath = tbSymDecryptKey.Text;
+                string secretKeyContent = File.ReadAllText(secretKeyPath);
 
-            string decryptedText = SymmetricEncryption.DecryptString_Aes(inputFileContent, secretKeyContent);
-            File.WriteAllText(outputFilePath, decryptedText);
+                string decryptedText = SymmetricEncryption.DecryptString_Aes(inputFileContent, secretKeyContent);
+                File.WriteAllText(outputFilePath, decryptedText);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("The file is not found in the specified location");
+            }
+            catch (CryptographicException)
+            {
+                MessageBox.Show("The key is invalid");
+            }
         }
 
         private void btnGenerateAsymKey_Click(object sender, EventArgs e)
@@ -108,83 +129,134 @@ namespace DigitalSignature
 
         private void btnAsymEncrypt_Click(object sender, EventArgs e)
         {
-            string inputFilePath = tbAsymEncryptInput.Text;
-            string outputFilePath = tbAsymEncryptOutput.Text;
-            string publicKeyPath = tbAsymEncryptKey.Text;
+            try
+            {
+                string inputFilePath = tbAsymEncryptInput.Text;
+                string outputFilePath = tbAsymEncryptOutput.Text;
+                string publicKeyPath = tbAsymEncryptKey.Text;
 
-            string inputFileContent = File.ReadAllText(inputFilePath);
-            string publicKeyContent = File.ReadAllText(publicKeyPath);
-            RSAParameters publicKey = AsymmetricEncryption.ConvertStringKeyToParameters(publicKeyContent);
+                string inputFileContent = File.ReadAllText(inputFilePath);
+                string publicKeyContent = File.ReadAllText(publicKeyPath);
+                RSAParameters publicKey = AsymmetricEncryption.ConvertStringKeyToParameters(publicKeyContent);
 
-            string encryptedText = AsymmetricEncryption.EncryptText(inputFileContent, publicKey);
-            File.WriteAllText(outputFilePath, encryptedText);
+                string encryptedText = AsymmetricEncryption.EncryptText(inputFileContent, publicKey);
+                File.WriteAllText(outputFilePath, encryptedText);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("The file is not found in the specified location");
+            }
+            catch (CryptographicException)
+            {
+                MessageBox.Show("The text is too long");
+            }
         }
 
         private void btnAsymDecrypt_Click(object sender, EventArgs e)
         {
-            string inputFilePath = tbAsymDecryptInput.Text;
-            string outputFilePath = tbAsymDecryptOutput.Text;
-            string privateKeyPath = tbAsymDecryptKey.Text;
+            try
+            {
+                string inputFilePath = tbAsymDecryptInput.Text;
+                string outputFilePath = tbAsymDecryptOutput.Text;
+                string privateKeyPath = tbAsymDecryptKey.Text;
 
-            string inputFileContent = File.ReadAllText(inputFilePath);
-            string privateKeyContent = File.ReadAllText(privateKeyPath);
-            RSAParameters privateKey = AsymmetricEncryption.ConvertStringKeyToParameters(privateKeyContent);
+                string inputFileContent = File.ReadAllText(inputFilePath);
+                string privateKeyContent = File.ReadAllText(privateKeyPath);
+                RSAParameters privateKey = AsymmetricEncryption.ConvertStringKeyToParameters(privateKeyContent);
 
-            string decryptedText = AsymmetricEncryption.DecryptText(inputFileContent, privateKey);
-            File.WriteAllText(outputFilePath, decryptedText);
+                string decryptedText = AsymmetricEncryption.DecryptText(inputFileContent, privateKey);
+                File.WriteAllText(outputFilePath, decryptedText);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("The file is not found in the specified location");
+            }
+            catch (CryptographicException)
+            {
+                MessageBox.Show("The text is too long");
+            }
         }
 
         private void btnHashText_Click(object sender, EventArgs e)
         {
-            string inputFilePath = tbHashTextInput.Text;
-            string outputFilePath = tbHashTextOutput.Text;
+            try
+            {
+                string inputFilePath = tbHashTextInput.Text;
+                string outputFilePath = tbHashTextOutput.Text;
 
-            string inputFileContent = File.ReadAllText(inputFilePath);
-            string hashedText = Hashing.GetHashedText(inputFileContent);
+                string inputFileContent = File.ReadAllText(inputFilePath);
+                string hashedText = Hashing.GetHashedText(inputFileContent);
 
-            File.WriteAllText(outputFilePath, hashedText);
+                File.WriteAllText(outputFilePath, hashedText);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("The file is not found in the specified location");
+            }
         }
 
         private void btnCreateDigitalSignature_Click(object sender, EventArgs e)
         {
-            string inputFilePath = tbCreateDSInputText.Text;
-            string inputFileContent = File.ReadAllText(inputFilePath);
+            try
+            {
+                string inputFilePath = tbCreateDSInputText.Text;
+                string inputFileContent = File.ReadAllText(inputFilePath);
 
-            string inputKeyPath = tbCreateDSInputKey.Text;
-            string inputKeyContent = File.ReadAllText(inputKeyPath);
-            RSAParameters inputKey = AsymmetricEncryption.ConvertStringKeyToParameters(inputKeyContent);
+                string inputKeyPath = tbCreateDSInputKey.Text;
+                string inputKeyContent = File.ReadAllText(inputKeyPath);
+                RSAParameters inputKey = AsymmetricEncryption.ConvertStringKeyToParameters(inputKeyContent);
 
-            string outputHashFilePath = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.DigitalSignatureHashedFileName);
-            string hashedText = Hashing.GetHashedText(inputFileContent);
-            File.WriteAllText(outputHashFilePath, hashedText);
+                string outputHashFilePath = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.DigitalSignatureHashedFileName);
+                string hashedText = Hashing.GetHashedText(inputFileContent);
+                File.WriteAllText(outputHashFilePath, hashedText);
 
-            string outputEncryptedFilePath = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.DigitalSignatureEncryptedFileName);
-            string encryptedHash = AsymmetricEncryption.EncryptText(hashedText, inputKey);
-            File.WriteAllText(outputEncryptedFilePath, encryptedHash);
+                string outputEncryptedFilePath = Path.Combine(Properties.Settings.Default.FolderPath, Properties.Settings.Default.DigitalSignatureEncryptedFileName);
+                string encryptedHash = AsymmetricEncryption.EncryptText(hashedText, inputKey);
+                File.WriteAllText(outputEncryptedFilePath, encryptedHash);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("The file is not found in the specified location");
+            }
         }
 
         private void btnCheckDigitalSignature_Click(object sender, EventArgs e)
         {
-            string inputFilePath = tbCheckDSInputText.Text;
-            string inputFileContent = File.ReadAllText(inputFilePath);
-
-            string inputKeyPath = tbCheckDSInputKey.Text;
-            string inputKeyContent = File.ReadAllText(inputKeyPath);
-            RSAParameters inputKey = AsymmetricEncryption.ConvertStringKeyToParameters(inputKeyContent);
-
-            string inputSignaturePath = tbCheckDSInputSignature.Text;
-            string inputSignatureContent = File.ReadAllText(inputSignaturePath);
-
-            string hashedText = Hashing.GetHashedText(inputFileContent);
-            string decryptedHash = AsymmetricEncryption.DecryptText(inputSignatureContent, inputKey);
-
-            if (decryptedHash == hashedText)
+            try
             {
-                MessageBox.Show("OK!");
+                string inputFilePath = tbCheckDSInputText.Text;
+                string inputFileContent = File.ReadAllText(inputFilePath);
+
+                string inputKeyPath = tbCheckDSInputKey.Text;
+                string inputKeyContent = File.ReadAllText(inputKeyPath);
+                RSAParameters inputKey = AsymmetricEncryption.ConvertStringKeyToParameters(inputKeyContent);
+
+                string inputSignaturePath = tbCheckDSInputSignature.Text;
+                string inputSignatureContent = File.ReadAllText(inputSignaturePath);
+
+                string hashedText = Hashing.GetHashedText(inputFileContent);
+                string decryptedHash = AsymmetricEncryption.DecryptText(inputSignatureContent, inputKey);
+
+                if (decryptedHash == hashedText)
+                {
+                    MessageBox.Show("Digital signature is OK!");
+                }
+                else
+                {
+                    MessageBox.Show("Digital signature is not valid! Original text is modified.");
+                }
             }
-            else
+            catch (FileNotFoundException)
             {
-                MessageBox.Show("Digital signature is not valid!");
+                MessageBox.Show("The file is not found in the specified location");
+            }
+            catch (CryptographicException)
+            {
+                MessageBox.Show("The key is invalid");
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Digital signature is not valid! The digital signature value is modified.");
             }
         }
     }
