@@ -173,7 +173,7 @@ namespace DigitalSignature
             }
             catch (CryptographicException)
             {
-                MessageBox.Show("The text is too long");
+                MessageBox.Show("The key is invalid");
             }
         }
 
